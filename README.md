@@ -15,4 +15,6 @@ The added task would be added to the list below with the option to update/edit i
 
 If there are alot of task written, the user may use the search feature for faster results.
 
+The lists remains even after you refresh the page.
+
 
