@@ -84,7 +84,7 @@ export default function Home() {
             <div className="lg:flex lg:justify-evenly lg:gap-y-4 lg:w-3/4">
                 <div className="flex flex-col gap-y-4 mb-4">
                     <input className="block border-0 py-1.5 pr-20 pl-7 rounded-md text-gray-900 placeholder:text-gray-400 sm:text-sm sm:leading-6 ring-1 ring-gray-300 ring-inset focus:ring-2 focus:ring-inset focus:ring-indigo-600" type="text" placeholder="new task" onChange={(e) => setNewTask(e.target.value)} value={newTask} />
-                    <button className="bg-emerald-500 hover:bg-green-500 focus:bg-green-500 active:bg-green-600 focus:outline-none focus:ring focus:ring-green-700 p-2 rounded-2xl w-full" onClick={AddTask}>New Task</button>
+                    <button className="bg-emerald-500 hover:bg-green-500 focus:bg-green-500 active:bg-green-600 focus:outline-none focus:ring focus:ring-green-700 p-2 rounded-2xl w-full" onClick={AddTask}>Create</button>
                 </div>
                 <div className="flex flex-col gap-y-4 mb-4">
                     <input className="block border-0 py-1.5 pr-20 pl-7 rounded-md text-gray-900 placeholder:text-gray-400 sm:text-sm sm:leading-6 ring-1 ring-gray-300 ring-inset focus:ring-2 focus:ring-inset focus:ring-indigo-600" type="text" value={searchTask} onChange={(e) => setSearchTask(e.target.value)} placeholder="search" />
