@@ -9,14 +9,15 @@ export type Tasks = {
     isEditing: boolean;
 }
 export default function Home() {
+    const localStorageTasks = localStorage.getItem('tasks') ?? '[]'
     const [searchTask, setSearchTask] = useState<string>("");
-    const [listOfTask, setListOfTask] = useState<Tasks[]>(JSON.parse(localStorage.getItem('tasks') ?? '') ?? []);
+    const [listOfTask, setListOfTask] = useState<Tasks[]>(JSON.parse(localStorageTasks) ?? []);
     const [newTask, setNewTask] = useState<string>("");
     const [updateTask, setUpdateTask] = useState<string>("");
 
     useEffect(() => {
         if (searchTask === "") {
-            setListOfTask(JSON.parse(localStorage.getItem('tasks') ?? '') ?? [])
+            setListOfTask(JSON.parse(localStorageTasks) ?? [])
         } else {
             SearchTask()
         }
@@ -24,13 +25,12 @@ export default function Home() {
 
     const SearchTask = (): void => {
         let mappedData: Tasks[] = [];
-        let storedData: Tasks[] = JSON.parse(localStorage.getItem('tasks') ?? '') ?? [];
+        let storedData: Tasks[] = JSON.parse(localStorageTasks) ?? [];
         storedData.filter(task => task.name.toUpperCase()
             .includes(searchTask.toUpperCase()))
             .map((filtered, index) => mappedData.push(filtered))
         setListOfTask(mappedData)
     }
-
     const AddTask = (): void => {
         let pattern = /^\w+$/;
         let isValid = pattern.test(newTask);
@@ -41,8 +41,8 @@ export default function Home() {
         }else{
             alert("Please enter valid value")
         }
-
     }
+
     const RemoveTask = (id: number): void => {
         setListOfTask(listOfTask.filter(task => task.id !== id))
         localStorage.setItem("tasks", JSON.stringify(listOfTask.filter(task => task.id !== id)));
