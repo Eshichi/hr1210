@@ -11,8 +11,10 @@ export type Tasks = {
 export default function Home() {
     
     let localStorageTasks = '[]'
+    
     if(typeof localStorage !== 'undefined'){
         localStorageTasks = localStorage.getItem('tasks') ?? '[]'
+        console.log(localStorage, "localStorage")
     }
     const [searchTask, setSearchTask] = useState<string>("");
     const [listOfTask, setListOfTask] = useState<Tasks[]>(JSON.parse(localStorageTasks) ?? []);
@@ -74,7 +76,7 @@ export default function Home() {
         if (!checkIsEditing) {
             setListOfTask(updateList)
         } else {
-            let closeItem: any = updateList.find(task => task.id === checkIsEditing.id)
+            let closeItem: any = updateList.find(task => task.id === checkIsEditing?.id)
             closeItem.isEditing = false
             setListOfTask(updateList)
         }
