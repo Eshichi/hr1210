@@ -9,7 +9,11 @@ export type Tasks = {
     isEditing: boolean;
 }
 export default function Home() {
-    const localStorageTasks = localStorage.getItem('tasks') ?? '[]'
+    
+    let localStorageTasks = '[]'
+    if(typeof localStorage !== 'undefined'){
+        localStorageTasks = localStorage.getItem('tasks') ?? '[]'
+    }
     const [searchTask, setSearchTask] = useState<string>("");
     const [listOfTask, setListOfTask] = useState<Tasks[]>(JSON.parse(localStorageTasks) ?? []);
     const [newTask, setNewTask] = useState<string>("");
